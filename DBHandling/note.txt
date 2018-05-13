@@ -1,0 +1,2 @@
+컴파일할 때 -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient 옵션 추가
+mysql 접속 : mysql -uroot -p
