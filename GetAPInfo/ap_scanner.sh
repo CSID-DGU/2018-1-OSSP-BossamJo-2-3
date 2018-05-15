@@ -13,6 +13,7 @@
 # -E 정규표현식 사용
 DoThisOnCtrlC(){
 	echo "At end of loop : count=$count"
+	make --makefile=/home/gokaist/바탕화면/2018-1-OSSP-BossamJo-3/makefile
 	exit 0
 }
 	
