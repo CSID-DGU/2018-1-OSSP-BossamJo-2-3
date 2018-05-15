@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 #Create       : 18.5.11
-#Modify       : 18.5.14
+#Modify       : 18.5.15
 #Student Name : Lim JunSu
 #Student Num  : 2010111661
 #Description  : 현재 연결된 AP의 mac address를 파싱하는 스크립트 문.
@@ -11,6 +11,13 @@
 
 # -o 옵션은 매칭되는 전체 라인이 아니라 매칭되는 문자열만 추출
 # -E 정규표현식 사용
+DoThisOnCtrlC(){
+	echo "At end of loop : count=$count"
+	exit 0
+}
+	
+trap 'DoThisOnCtrlC' SIGINT
+
 
 while :
 do
@@ -22,14 +29,11 @@ do
 	if [ $isInFile -eq 0 ] 
 	then
 		echo "문자열이 존재하지 않습니다 mac주소 저장" 
-		`iwconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' >> APInfo.txt`
+		`iwconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' >> ./APInfo.txt`
 	else
 		echo "mac 주소가 이미 파일에 있습니다"
 	fi
-	
+
+	((count++))
 	sleep 3
 done
-
-
-
-
