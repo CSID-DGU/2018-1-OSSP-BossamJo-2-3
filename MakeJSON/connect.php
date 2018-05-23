@@ -1,4 +1,10 @@
 <?php
+//Create       : 18.5.22
+//Modify       : 18.5.23
+//Student Name : Lim JunSu
+//Student Num  : 2010111661
+//Description  : convert mysql data to json format
+ 
 //When using, input db server ip, db id, db pw.
 $servername="";
 $username="";
