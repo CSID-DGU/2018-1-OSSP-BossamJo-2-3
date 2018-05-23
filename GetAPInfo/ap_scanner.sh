@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Create       : 18.5.11
-#Modify       : 18.5.15
+#Modify       : 18.5.16
 #Student Name : Lim JunSu
 #Student Num  : 2010111661
 #Description  : 현재 연결된 AP의 mac address를 파싱하는 스크립트 문.
@@ -36,5 +36,5 @@ do
 	fi
 
 	((count++))
-	sleep 3
+	sleep 2
 done

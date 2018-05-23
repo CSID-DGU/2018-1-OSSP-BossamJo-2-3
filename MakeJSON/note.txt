@@ -1,0 +1,4 @@
+아파치 서버, PHP 설치 필수
+/var/www/html : php 경로
+php 코드 사용 시 DB IP, ID, PWD 코드에 입력
+
