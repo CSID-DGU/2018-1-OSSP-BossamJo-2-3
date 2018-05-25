@@ -1,14 +1,14 @@
 <?php
 //Create       : 18.5.22
-//Modify       : 18.5.23
+//Modify       : 18.5.26
 //Student Name : Lim JunSu
 //Student Num  : 2010111661
 //Description  : convert mysql data to json format
  
-//When using, input db server ip, db id, db pw.
-$servername="";
-$username="";
-$password="";
+//When using, input db id, db pw.
+$servername="localhost";
+$username="ossp";
+$password="ossp";
 $dbName="APInfo";
 
 //create connection
