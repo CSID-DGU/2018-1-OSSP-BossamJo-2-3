@@ -6,7 +6,7 @@ import android.location.Location;
  * Created by ntdat on 1/13/17.
  */
 
-public class LocationHelper {
+/*public class LocationHelper {
     private final static double WGS84_A = 6378137.0;                  // WGS 84 semi-major axis constant in meters
     private final static double WGS84_E2 = 0.00669437999014;          // square of WGS 84 eccentricity
 
@@ -49,4 +49,4 @@ public class LocationHelper {
 
         return new float[] {east , north, up, 1};
     }
-}
+}*/
