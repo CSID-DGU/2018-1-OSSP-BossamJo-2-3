@@ -41,6 +41,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class ARActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -52,6 +53,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
     ArrayList<HashMap<String, String>> mArrayList;
     String mJsonString;
+    String currentAPMacAddress;
 
 
     private SurfaceView surfaceView;
@@ -74,6 +76,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,16 +87,31 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         GetData task = new GetData();
         task.execute("http://13.125.248.203/connect.php");
 
+        currentAPMacAddress = getMacId(); // 현재 AP mac address 가져오기
+
+        // 디버깅 해야 됨.
+        for(HashMap<String, String> entry : mArrayList)
+        {
+            for(String mac : entry.keySet())
+            {
+                String info = entry.get(mac);
+            }
+        }
+
+
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_container_layout);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
        // tvCurrentLocation = (TextView) findViewById(R.id.tv_current_location);
        // arOverlayView = new AROverlayView(this);
     }
+    //AsyncTask 추상 클래스
+    //백그라운드로 GetData 클래스 실행
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
 
+        //초기 실행
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -103,10 +121,12 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         }
 
 
+        //백그라운드 실행
+        //전달받은 서버의 IP 주소를 받아서 connection 생성
         @Override
         protected String doInBackground(String... params) {
 
-            String serverURL = params[0];
+            String serverURL = params[0];//서버의 IP 주소
 
 
             try {
@@ -144,7 +164,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
                 bufferedReader.close();
 
-
+                //읽어온 데이터를 문자열로 전환
                 return sb.toString().trim();
 
 
@@ -158,14 +178,30 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
         }
 
+        //백그라운드 종료될 때 실행
         @Override
         protected void onPostExecute(String result) {
-            super.onPreExecute();
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+ //           mTextViewResult.setText(result); 문자열 화면에 출력
+ //           Log.d(TAG, "response  - " + result);
+
+            if (result == null){
+                //에러 표시 출력문
+//               mTextViewResult.setText(errorString);
+            }
+            else {
+                //JSON으로 변환
+                mJsonString = result;
+                stringToJSON();
+            }
         }
     }
 
 
-    private void showResult(){
+    //string을 JSON으로 변환 후에 ArrayList에 저장, ArrayList에 자료형은 HashMap.
+    private void stringToJSON(){
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -180,9 +216,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_INFO,info);
                 hashMap.put(TAG_MAC, mac);
-
+                hashMap.put(TAG_INFO,info);
 
                 mArrayList.add(hashMap);
             }
@@ -195,7 +230,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 
     }
 
-    public String getMacId() { //ap address를 불러옵니다.
+    private String getMacId() { //ap address를 불러옵니다.
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         return wifiInfo.getBSSID();
@@ -319,8 +354,8 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     public void onAccuracyChanged(Sensor sensor, int i) {
         //do nothing
     }
-
-   /* private void initLocationService() {
+/*
+    private void initLocationService() {
 
         if ( Build.VERSION.SDK_INT >= 23 &&
                 ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {

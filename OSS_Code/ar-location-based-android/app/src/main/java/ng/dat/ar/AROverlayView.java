@@ -1,5 +1,4 @@
 package ng.dat.ar;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,7 +11,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import ng.dat.ar.helper.LocationHelper;
+//import ng.dat.ar.helper.LocationHelper;
 import ng.dat.ar.model.ARPoint;
 
 /**
