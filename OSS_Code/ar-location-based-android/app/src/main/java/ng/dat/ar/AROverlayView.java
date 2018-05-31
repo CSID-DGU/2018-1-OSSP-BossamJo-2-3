@@ -19,7 +19,7 @@ import ng.dat.ar.model.ARPoint;
  * Created by ntdat on 1/13/17.
  */
 
-public class AROverlayView extends View {
+/*public class AROverlayView extends View {
 
     Context context;
     private float[] rotatedProjectionMatrix = new float[16];
@@ -83,4 +83,4 @@ public class AROverlayView extends View {
             }
         }
     }
-}
+}*/
