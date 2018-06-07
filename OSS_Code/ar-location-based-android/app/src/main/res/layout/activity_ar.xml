@@ -18,6 +18,16 @@
             android:layout_height="match_parent" />
     </FrameLayout>
 
+    <TextView
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Info :"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview"/>
+
+
+
+
 
 </FrameLayout>
-

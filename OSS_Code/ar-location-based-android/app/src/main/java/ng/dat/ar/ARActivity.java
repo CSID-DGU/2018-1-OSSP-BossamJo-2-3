@@ -3,6 +3,7 @@ package ng.dat.ar;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Sensor;
@@ -22,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
@@ -29,6 +31,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
+import android.widget.EditText;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,22 +56,23 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     private static final String TAG_INFO="info";
     private static final String TAG_MAC="mac";
 
-    ArrayList<HashMap<String, String>> mArrayList;
+    ArrayList<HashMap<String, String>> mArrayList = new ArrayList<>();
     String mJsonString;
     String currentAPMacAddress;
-
-
+    //--------------UI variables------------------------
     private SurfaceView surfaceView;
     private FrameLayout cameraContainerLayout;
    // private AROverlayView arOverlayView;
     private Camera camera;
     private ARCamera arCamera;
     private TextView tvCurrentLocation;
-
+    private GetData task;
     private SensorManager sensorManager;
+   // private EditText mEt;
+    //private Button mBtn;
     private final static int REQUEST_CAMERA_PERMISSIONS_CODE = 11;
     public static final int REQUEST_LOCATION_PERMISSIONS_CODE = 0;
-
+    //------------------------------------------------------------------------------
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 10 meters
     private static final long MIN_TIME_BW_UPDATES = 0;//1000 * 60 * 1; // 1 minute
 
@@ -76,35 +82,95 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
 
+/*
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+
+    }
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
 
-        mArrayList = new ArrayList<>();
-
-        GetData task = new GetData();
+        task = new GetData();
         task.execute("http://13.125.248.203/connect.php");
+      //  mEt=(EditText)findViewById(R.id.eText01); -------- 문제 있음
+        // mBtn=(Button)findViewById(R.id.tView01);
 
-        currentAPMacAddress = getMacId(); // 현재 AP mac address 가져오기
+        final TextView textView=(TextView)findViewById(R.id.textview);
+/*
+        String tempMAC;
+        String tempInfo;
 
-        // 디버깅 해야 됨.
-        for(HashMap<String, String> entry : mArrayList)
-        {
-            for(String mac : entry.keySet())
-            {
-                String info = entry.get(mac);
+            currentAPMacAddress = getMacId(); // 현재 AP mac address 가져오기
+            for(HashMap<String, String> entry : mArrayList) {
+                tempMAC = entry.get(TAG_MAC).toString();
+                tempInfo = entry.get(TAG_INFO).toString();
+                if (tempMAC.equals(currentAPMacAddress)) {
+                    textView.setText(tempInfo);
+                }
             }
-        }
+            try {
+                Thread.sleep(1000);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+
+            }
+
+*/
+
+
+        //스레드 구현
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String tempMAC;
+                String tempInfo;
+                while(true)
+                {
+                    currentAPMacAddress = getMacId(); // 현재 AP mac address 가져오기
+                    for(HashMap<String, String> entry : mArrayList) {
+                        tempMAC = entry.get(TAG_MAC).toString();
+                        tempInfo = entry.get(TAG_INFO).toString();
+                        if (tempMAC.equals(currentAPMacAddress)) {
+                            textView.setText(tempInfo);
+                        }
+                    }
+                    try {
+                        Thread.sleep(1000);
+                    }catch(InterruptedException e){
+                        e.printStackTrace();
+
+                    }
+                }
+
+            }
+        });
 
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_container_layout);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
-       // tvCurrentLocation = (TextView) findViewById(R.id.tv_current_location);
-       // arOverlayView = new AROverlayView(this);
+
+        th.start(); // 스레드 시작
+
+        // tvCurrentLocation = (TextView) findViewById(R.id.tv_current_location);
+        // arOverlayView = new AROverlayView(this);
+/*
+        mBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = mEt.getText().toString();
+                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            }
+        }); */
     }
+
     //AsyncTask 추상 클래스
     //백그라운드로 GetData 클래스 실행
     private class GetData extends AsyncTask<String, Void, String> {
@@ -165,9 +231,12 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 bufferedReader.close();
 
                 //읽어온 데이터를 문자열로 전환
-                return sb.toString().trim();
+               // return sb.toString().trim();
+                mJsonString = sb.toString().trim();
+                stringToJSON();
 
-
+//이거 반환 값 조정 필요
+                return null;
             } catch (Exception e) {
 
                 Log.d(TAG, "InsertData: Error ", e);
@@ -192,9 +261,12 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
 //               mTextViewResult.setText(errorString);
             }
             else {
+                // 여기 조정 필요
                 //JSON으로 변환
-                mJsonString = result;
-                stringToJSON();
+                //mJsonString = result;
+                //stringToJSON();
+                //Intent a = new Intent(getApplicationContext(),ARActivity.class);
+                //startActivity(a);
             }
         }
     }
@@ -220,8 +292,9 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                 hashMap.put(TAG_INFO,info);
 
                 mArrayList.add(hashMap);
-            }
+                Log.i("arraylistsize", mArrayList.size() + "");
 
+            }
 
         } catch (JSONException e) {
 
@@ -231,9 +304,12 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     }
 
     private String getMacId() { //ap address를 불러옵니다.
+       // String temp;
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        return wifiInfo.getBSSID();
+       // temp=wifiInfo.getMacAddress();
+      //  temp=wifiInfo.getBSSID();
+        return wifiInfo.getMacAddress();
     }
 
     @Override
