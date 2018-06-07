@@ -15,9 +15,14 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.opengl.Matrix;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +39,6 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,7 +50,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class ARActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -68,108 +71,67 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     private TextView tvCurrentLocation;
     private GetData task;
     private SensorManager sensorManager;
-   // private EditText mEt;
-    //private Button mBtn;
+    private TextView textView;
+    private String _mac;
+    private String _info;
     private final static int REQUEST_CAMERA_PERMISSIONS_CODE = 11;
     public static final int REQUEST_LOCATION_PERMISSIONS_CODE = 0;
     //------------------------------------------------------------------------------
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 10 meters
     private static final long MIN_TIME_BW_UPDATES = 0;//1000 * 60 * 1; // 1 minute
 
-    private LocationManager locationManager;
-    public Location location;
-    boolean isGPSEnabled;
-    boolean isNetworkEnabled;
-    boolean locationServiceAvailable;
-
-/*
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-    }
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
 
+        textView=(TextView)findViewById(R.id.textview);
         task = new GetData();
-        task.execute("http://13.125.248.203/connect.php");
-      //  mEt=(EditText)findViewById(R.id.eText01); -------- 문제 있음
-        // mBtn=(Button)findViewById(R.id.tView01);
+        task.execute("http://13.125.248.203/connect.php");//server connection
 
-        final TextView textView=(TextView)findViewById(R.id.textview);
-/*
-        String tempMAC;
-        String tempInfo;
-
-            currentAPMacAddress = getMacId(); // 현재 AP mac address 가져오기
-            for(HashMap<String, String> entry : mArrayList) {
-                tempMAC = entry.get(TAG_MAC).toString();
-                tempInfo = entry.get(TAG_INFO).toString();
-                if (tempMAC.equals(currentAPMacAddress)) {
-                    textView.setText(tempInfo);
-                }
-            }
-            try {
-                Thread.sleep(1000);
-            }catch(InterruptedException e){
-                e.printStackTrace();
-
-            }
-
-*/
-
-
-        //스레드 구현
-        Thread th = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String tempMAC;
-                String tempInfo;
-                while(true)
-                {
-                    currentAPMacAddress = getMacId(); // 현재 AP mac address 가져오기
-                    for(HashMap<String, String> entry : mArrayList) {
-                        tempMAC = entry.get(TAG_MAC).toString();
-                        tempInfo = entry.get(TAG_INFO).toString();
-                        if (tempMAC.equals(currentAPMacAddress)) {
-                            textView.setText(tempInfo);
-                        }
-                    }
-                    try {
-                        Thread.sleep(1000);
-                    }catch(InterruptedException e){
-                        e.printStackTrace();
-
-                    }
-                }
-
-            }
-        });
-
+        //thread start
+        BackThread thread = new BackThread();
+        thread.setDaemon(true);
+        thread.start();
 
         sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_container_layout);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
 
-        th.start(); // 스레드 시작
-
-        // tvCurrentLocation = (TextView) findViewById(R.id.tv_current_location);
-        // arOverlayView = new AROverlayView(this);
-/*
-        mBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String msg = mEt.getText().toString();
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-            }
-        }); */
     }
+
+    class BackThread extends Thread{
+        @Override
+        public void run(){
+            while(true){
+                currentAPMacAddress=getMacId().toUpperCase();
+                for (HashMap<String, String> entry : mArrayList) {
+                    _mac = entry.get(TAG_MAC).toString();
+                    if (_mac.equals(currentAPMacAddress)) {
+                        _info = entry.get(TAG_INFO).toString();
+                        handler.sendEmptyMessage(0);
+                    }
+                }
+                try {
+                    Thread.sleep(1000);
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    Handler handler=new Handler(){
+        public void handleMessage(Message msg){
+            if(msg.what==0)
+            {
+                textView.setText(_info);
+            }
+            else
+            {
+                textView.setText("no match");
+            }
+        }
+    };
 
     //AsyncTask 추상 클래스
     //백그라운드로 GetData 클래스 실행
@@ -185,7 +147,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             progressDialog = ProgressDialog.show(ARActivity.this,
                     "Please Wait", null, true, true);
         }
-
 
         //백그라운드 실행
         //전달받은 서버의 IP 주소를 받아서 connection 생성
@@ -271,7 +232,6 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         }
     }
 
-
     //string을 JSON으로 변환 후에 ArrayList에 저장, ArrayList에 자료형은 HashMap.
     private void stringToJSON(){
         try {
@@ -304,12 +264,15 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     }
 
     private String getMacId() { //ap address를 불러옵니다.
-       // String temp;
-        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-       // temp=wifiInfo.getMacAddress();
-      //  temp=wifiInfo.getBSSID();
-        return wifiInfo.getMacAddress();
+        ConnectivityManager connManager=(ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if(networkInfo.isConnected()){
+            final WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            final WifiInfo connectionInfo=wifiManager.getConnectionInfo();
+
+            return connectionInfo.getBSSID();
+        }
+        return null;
     }
 
     @Override
