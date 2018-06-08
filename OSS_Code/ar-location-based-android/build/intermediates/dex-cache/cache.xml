@@ -3,93 +3,111 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_e174047ecd0e027a1b38665f91a3f4bfa1cb5d05.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.0_e6d7c91150376d3260e3a8e739e7a5231fbae693.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.0_476db9c4ba98c67c184d93dddcdb49ca7dae577e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Gkernel\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jar="C:\Users\mina\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_4bea12499193e1804aee45443a140fffa6cf35e0.jar" />
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_3ba7b05929439b069e9946de1d5021724c9182e1.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.0_9411ba0501a998606de0963036e1b82edfa0923d.jar" />
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.0_ce52f01df84134f6b60080c38e968199ad6186b5.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.1.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.0_cbf7d9980fa404d6aaadfcb8a9deae466ec47ec4.jar" />
+        sha1="481f7c5fbf8121550064cb4795e310034a505e95">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support.constraint-constraint-layout-1.1.1_b88d879a655c5d51ef70baf04fae316acc02ccbe.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jar="C:\Users\mina\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.1.1\cece6996f6bc526ed0d8453a43765bcf8f2b6018\constraint-layout-solver-1.1.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_40be08f2321eae4b012d3e159cd0ff26c3c050ac.jar" />
+        sha1="cece6996f6bc526ed0d8453a43765bcf8f2b6018">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.1.1_ad6a8f576d7c7a7da6e747014f65cc344c62dfa9.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_8a3d7339c733d26f057ae25d25128c86806fc1ff.jar" />
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_059fd9f53b24ba813e5e78b5edd952e29b700549.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_030322a6a993a56c1b2df0b1df460c7abb1a2c88.jar" />
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.0_18d00c14f038e78b3940a5660add850a3f742198.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="C:\Users\Gkernel\Desktop\2018-1-OSSP-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_13a8ed6ee984726507516e2af6e3a0cf160df5d4.jar" />
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_20d18cc74c52cf9d630a122f38b08e6d72b1d6ba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_f96128a69e3412ddd87cab5e092e62c4a06cf618.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.0_35795b16a5f3509aed038208b13f98d16d0361ac.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.0_75a89e6851aa01ae2eef479b36f49e2e4ef23df8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_4bac9b8d887f34dd2a7243e5c27e5739f8dd4e78.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Users\mina\Desktop\2018-1-ossp-BossamJo-3\OSS_Code\ar-location-based-android\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_b5ef1bd6c98c3c84443c09e1d08757d4b261f81b.jar" />
     </item>
 
 </items>
