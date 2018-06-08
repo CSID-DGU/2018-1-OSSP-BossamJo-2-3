@@ -98,6 +98,19 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         cameraContainerLayout = (FrameLayout) findViewById(R.id.camera_container_layout);
         surfaceView = (SurfaceView) findViewById(R.id.surface_view);
 
+        Button button=(Button) findViewById(R.id.button);
+        button.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        Intent intent =new Intent(getApplicationContext(),SubActivity.class);
+                        startActivity(intent);
+                    }
+
+                }
+
+        );
+
+
     }
 
     class BackThread extends Thread{
