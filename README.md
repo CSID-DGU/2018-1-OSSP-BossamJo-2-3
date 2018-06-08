@@ -28,6 +28,6 @@ Cha Duk Heum(Git ID : )
 
 ---
 
-AWS LAMP Server IP : <13.125.248.203>
+AWS LAMP Server IP : <http://13.125.248.203>
 
 Open Source Link : <https://github.com/dat-ng/ar-location-based-android>
