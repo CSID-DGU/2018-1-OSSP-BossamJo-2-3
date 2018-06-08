@@ -1,6 +1,6 @@
 # 2018-1-OSSP-BossamJo-3 
 ## Dongguk University Computer Engineering Department - Open Source Software Class
----
+
 
 __Operation Process__
 
@@ -28,6 +28,6 @@ Cha Duk Heum(Git ID : )
 
 ---
 
-AWS LAMP Server IP : <https://13.125.248.203>
+AWS LAMP Server IP : <13.125.248.203>
 
 Open Source Link : <https://github.com/dat-ng/ar-location-based-android>
