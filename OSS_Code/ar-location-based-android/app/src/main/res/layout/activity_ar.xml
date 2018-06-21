@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ng.dat.ar.ARActivity"
-    android:layout_margin="15dp"
-    android:padding="10dp">
+
+    >
 
     <FrameLayout
         android:id="@+id/camera_container_layout"
@@ -19,19 +19,22 @@
     </FrameLayout>
 
     <TextView
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
-        android:text="Info :"
+        android:text=" "
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#1E90FF"
         android:id="@+id/textview"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="btn"
+        android:text="추가정보"
         android:alpha="0.5"
+        android:background="#ffff"
         android:id="@+id/button" />
 
 
