@@ -42,7 +42,6 @@ If you have any questions, please ask by email : blockboy88@naver.com
 
 __Screenshots__
 
-<img src="https://user-images.githubusercontent.com/18206655/41920823-7ae0e56e-799c-11e8-96a8-61ca8f7b7e45.jpg" width="40%">)
-
+<img src="https://user-images.githubusercontent.com/18206655/41920823-7ae0e56e-799c-11e8-96a8-61ca8f7b7e45.jpg" width="30%">
 
 
