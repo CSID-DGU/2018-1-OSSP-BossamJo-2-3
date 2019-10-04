@@ -22,23 +22,22 @@ Run in android studio.
 
 __Team member introduction.__
 
-Name : Lim Jun Su, Student Num : 2010111661, Git ID : JLGGG - Team Leader
+Name : Lim Jun Su,    Git ID : JLGGG - Team Leader
 
-Name : Lee Na Young, Student Num : 2014111820, Git ID : nayoung2014
+Name : Lee Na Young,  Git ID : nayoung2014
 
-Name : Min Kyung Eun, Student Num : 2016112149, Git ID : MInKyungEun
+Name : Min Kyung Eun, Git ID : MInKyungEun
 
-Name : Cha Duk Heum, Student Num : 2014113476, Git ID : 
+Name : Cha Duk Heum,  Git ID : -
 
 ---
 
-AWS LAMP(Linux, Apache2, MySQL, PHP) Server IP : <http://13.125.248.203>
+AWS LAMP(Linux, Apache2, MySQL, PHP) Server IP : -
 
-Convert MySQL data to json format using php : <http://13.125.248.203/connect.php> 
+Convert MySQL data to json format using php : -
 
 Open Source Link : <https://github.com/dat-ng/ar-location-based-android>
 
-If you have any questions, please ask by email : blockboy88@naver.com
 
 __Screenshots__
 
